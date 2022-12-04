@@ -1,0 +1,42 @@
+<div class="lds-dual-ring centered" *ngIf="inProcess"></div>
+<div class="container col-md-6" *ngIf="!inProcess">
+    <div class="form-group">
+        <label>Food name</label>
+        <input type="text" class="form-control" [(ngModel)]="food.name"
+               name="name" #name="ngModel" required>
+        <div [hidden]="name.valid" class="alert alert-danger">Имя обязательно</div>
+    </div>
+    <div class="form-group">
+        <label>Food price</label>
+        <input type="number" class="form-control" [(ngModel)]="food.price"
+               name="price" #price="ngModel" required min="0" step="1"
+               onkeypress="return event.charCode >= 48">
+        <div [hidden]="price.valid" class="alert alert-danger">Цена обязательна</div>
+    </div>
+    <div>
+        <label>Composition(Recipe)</label>
+        <textarea type="text" class="form-control" [(ngModel)]="food.composition" 
+                name="composition" style="height: 400px;resize: none;"></textarea>
+    </div>
+    <div class="custom-file mt-4">
+        <input type="file" (change)="changeFile($event.target)" accept=".png,.jpeg,.jpg" class="custom-file-input">
+        <label class="custom-file-label">Choose photo</label>
+    </div>
+    <div class="form-group">
+        <label>Category</label>
+        <select class="form-control" required [(ngModel)]="food.categoryId" name="category" 
+                #category="ngModel" (change)="uploadSubcategories()">
+            <option *ngFor="let category of categories" value="{{category.id}}">{{category.categoryName}}</option>
+        </select>
+        <div [hidden]="category.valid" class="alert alert-danger">Укажите категорию</div>
+    </div>
+    <div class="form-group" *ngIf="subcategories.length>0">
+        <label>Subcategory</label>
+        <select class="form-control" required [(ngModel)]="food.subcategoryId" name="subcategory" 
+                #subcategory="ngModel">
+            <option *ngFor="let subcategory of subcategories" value="{{subcategory.id}}">{{subcategory.subcategoryName}}</option>
+        </select>
+    </div>
+    <button class="btn btn-warning w-50 mx-auto d-block fw-bold mt-4" (click)="AddFood()"
+            [disabled]="name.invalid||price.invalid||category.invalid">Добавить</button>
+</div>

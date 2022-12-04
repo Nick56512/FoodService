@@ -1,0 +1,12 @@
+.food-pict{
+    margin-top: 12%;
+    width: 50%;
+    height: 50%;
+    margin-right: auto;
+    margin-left: auto;
+}
+.food-pict img
+{
+    width: 100%;
+    object-fit: cover;
+}

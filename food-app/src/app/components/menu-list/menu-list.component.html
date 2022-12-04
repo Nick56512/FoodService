@@ -1,0 +1,12 @@
+<div class="lds-dual-ring centered" *ngIf="!categories"></div>
+<div *ngIf="categories">
+<ul ngbNav #nav="ngbNav" class="nav-tabs justify-content-center">
+    <li ngbNavItem *ngFor="let category of categories">
+      <a ngbNavLink class="fw-bold">{{category.categoryName}}</a>
+      <ng-template ngbNavContent>
+          <app-food-list [categoryId]="category.id" ></app-food-list>
+      </ng-template>
+    </li>
+</ul>
+<div [ngbNavOutlet]="nav"></div>
+</div>

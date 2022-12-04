@@ -1,0 +1,21 @@
+<div class="lds-dual-ring centered" *ngIf="!food"></div>
+<div class="container col-md-8" *ngIf="food">
+    <div class="d-flex flex-wrap">
+      <div class="food-pict">
+            <img [src]="food.photoBase64">
+      </div>
+      <div class="ms-3">
+            <h3 class="text-center mt-2">{{food.name}}</h3>
+            <p class="mt-2 h4" style="color: gray;">
+                {{food.composition}}  
+            </p>
+    
+      </div>
+      <button class="d-block mx-auto btn btn-warning ms-4 fw-bold w-75" (click)="AddToCart()" *ngIf="!inCart">В корзину</button>
+      <div class="d-flex" *ngIf="inCart">
+          <button class="d-block mx-auto btn btn-warning ms-4 fw-bold" (click)="DeleteOneItemInCart()" >-</button>
+          <p class="h4 text-center fw-bold ms-3">{{quantity}}</p>
+          <button class="d-block mx-auto btn btn-warning ms-4 fw-bold" (click)="AddToCart()">+</button>
+      </div>
+    </div>
+</div>

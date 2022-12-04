@@ -1,0 +1,19 @@
+<div class="list-group col-md-5 container mt-5" *ngIf="cart.cartLines.length>0">
+  <div class="d-flex mt-2" *ngFor="let cartLine of cart.cartLines">
+  <div class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">{{cartLine.food.name}}</h5>
+      <h2>X {{cartLine.quantity}} </h2>
+    </div>
+    <p class="h6">{{cartLine.food.price}} &#8372;</p>
+   
+  </div>
+  <button class="d-block btn btn-danger mb-auto mt-auto ms-3" (click)="OnDelete(cartLine.food.id)">Delete</button>
+  </div>
+</div>
+<p class="display-4 text-center" *ngIf="cart.totalCost==0">Ваша корзина пуста</p>
+<div *ngIf="cart.totalCost>0">
+  <p class="display-4 text-center">{{cart.totalCost}} &#8372;</p>
+  <button class="btn btn-success d-block mx-auto" (click)="OnCreateOrder()">Оформить заказ</button>
+</div>
+

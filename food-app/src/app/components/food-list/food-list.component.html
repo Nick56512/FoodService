@@ -1,0 +1,9 @@
+<div class="lds-dual-ring centered" *ngIf="!foods"></div>
+<div class="d-flex flex-wrap" style="min-height:800px;">
+    <app-food-card *ngFor="let food of foods" [food]="food"></app-food-card>
+</div>
+
+<ngb-pagination *ngIf="foodLength>pageSize" class="d-flex justify-content-center" [collectionSize]="foodLength"
+                [pageSize]="pageSize" [(page)]="pageNumber" [boundaryLinks]="true"
+                (pageChange)="OnPageChanged($event)"></ngb-pagination>
+

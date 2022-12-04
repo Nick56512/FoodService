@@ -1,0 +1,47 @@
+<div class="lds-dual-ring centered" *ngIf="inProcess"></div>
+
+<div class="container col-md-6" *ngIf="!inProcess&&cart.totalCost!=0">
+    <div class="form-group">
+        <label>Your name</label>
+        <input type="text" class="form-control" [(ngModel)]="order.name"
+               name="name" #name="ngModel" required>
+        <div [hidden]="name.valid" class="alert alert-danger">Имя обязательно</div>
+    </div>
+    <div class="form-group">
+        <label>Your lastname</label>
+        <input type="text" class="form-control" [(ngModel)]="order.lastname"
+               name="lastname" #lastname="ngModel" required>
+        <div [hidden]="lastname.valid" class="alert alert-danger">Фамилия обязательна</div>
+    </div>
+    <div class="form-group">
+        <label>Your Email</label>
+        <input type="text" class="form-control" [(ngModel)]="order.email" 
+               name="email" #email="ngModel" required
+               pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$">
+        <div [hidden]="email.valid||email.untouched" class="alert alert-danger">Почта обязательна</div>
+    </div>
+    <div class="form-group">
+        <label>Your number phone</label>
+        <input type="text" class="form-control mt-2" [(ngModel)]="order.numberPhone" 
+                name="numberPhone" #numberPhone="ngModel" required
+                pattern="^((\+?3)?8)?0\d{9}$">
+        <div [hidden]="numberPhone.valid||numberPhone.untouched" class="alert alert-danger">Номер обязателен</div>
+    </div>
+    <div class="form-group">
+        <label>Address</label>
+        <input type="text" class="form-control mt-2" [(ngModel)]="order.address" 
+               name="numberPhone" #address="ngModel" required>
+        <div [hidden]="address.valid||address.untouched" class="alert alert-danger">Адрес обязателен</div>
+    </div>
+    <div class="form-group">
+        <label>Comment</label>
+        <textarea type="text" class="form-control" [(ngModel)]="order.comment" 
+                style="resize: none;height: 400px;"></textarea>
+    </div>
+    <p class="display-4 text-left mt-5">Всего: {{cart.totalCost}} &#8372;</p>
+    <button class="btn btn-success d-block mt-3 mx-auto w-50" 
+            [disabled]="name.invalid||lastname.invalid||email.invalid||numberPhone.invalid||address.invalid"
+            (click)="CreateOrder()">Оформить</button>
+    
+
+</div>

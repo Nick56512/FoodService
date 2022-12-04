@@ -1,0 +1,20 @@
+<div class="card bg-light border-secondary" style="width: 19rem; min-height: 23rem;" *ngIf="food">
+        <img [src]="food.photoBase64" class="card-img-top" style="object-fit: cover; cursor: pointer;" 
+                width="400" height="200" routerLink="/food/{{food.id}}">
+        <div class="card-body">
+          <h5 class="card-title text-center">{{food.name}}</h5>
+          <p class="card-text" style="color: gray;">{{food.composition?.slice(0,45)}}</p>
+          <div class="d-flex">
+              <div class="text-center">
+                <h5>{{food.price}}&#8372;</h5>
+              </div>
+      
+              <button class="d-block mx-auto btn btn-warning ms-4 fw-bold" (click)="AddToCart()" *ngIf="!inCart">В корзину</button>
+              <div class="d-flex" *ngIf="inCart">
+                  <button class="d-block mx-auto btn btn-warning ms-4 fw-bold" (click)="DeleteOneItemInCart()" >-</button>
+                  <p class="h4 text-center fw-bold ms-3">{{quantity}}</p>
+                  <button class="d-block mx-auto btn btn-warning ms-4 fw-bold" (click)="AddToCart()">+</button>
+              </div>
+          </div>
+        </div>
+</div>

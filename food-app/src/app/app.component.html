@@ -1,0 +1,27 @@
+<div class="container col-xl-9 main-content bg-light">
+   <nav class="navbar navbar-light bg-warning main-header">
+      
+         <a class="navbar-brand" routerLink="foodList">
+            <img src="https://www.pngrepo.com/png/353396/512/angular-icon.png" alt="" width="50" height="50" class="d-inline-block align-text-center">
+            NGULAR CAFE
+         </a>
+         <a class="nav-link text-dark h5 mt-2" aria-current="page" routerLink="foodList">Menu</a>
+         <a class="nav-link text-dark h5 mt-2" aria-current="page" routerLink="registration" *ngIf="!loginAccount">Create account</a>
+         <a class="nav-link h5 mt-2 text-dark" aria-current="page" routerLink="login" *ngIf="!loginAccount">Login</a>
+         <a class="nav-link h5 mt-2 text-dark" aria-current="page" *ngIf="loginAccount" (click)="Logout()" routerLink="foodList">Logout</a>
+         <div *ngIf="loginAccount">
+         <a class="nav-link h5 mt-2 text-dark" aria-current="page" 
+            routerLink="adminpanel"  *ngIf="loginAccount.roles.indexOf('Admin')!=-1">Admin panel</a>
+         </div>
+            <div class="d-flex">
+            <a class="nav-link display-5 fw-bold" href="#" routerLink="cart">
+               <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png" width="40" height="40" class="d-inline-block align-text-center">
+            </a>
+            <div class="cart-counter" *ngIf="cart.AllCount()">
+               {{cart.AllCount()}}
+            </div>
+         </div>
+     
+    </nav>
+    <router-outlet></router-outlet>
+</div>

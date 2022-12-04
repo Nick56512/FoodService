@@ -1,0 +1,31 @@
+<div class="lds-dual-ring centered" *ngIf="inProcess"></div>
+<div class="container col-md-8" *ngIf="!inProcess&&foods">
+    <button class="btn btn-success" routerLink="/addfood">Add new food</button>
+    <select class="form-control w-50 mx-auto" (change)="OnChangeCategory($event)">
+        <option *ngFor="let category of categories" value="{{category.id}}"
+        [selected]="categoryId==category.id">{{category.categoryName}}</option>
+    </select>
+    <table class="table mt-3" style="min-height: 600px;">
+        <thead>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Composition</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let food of foods">
+                <td>{{food.name}}</td>
+                <td>{{food.price}}</td>
+                <td>{{food.composition?.slice(0,45)}}</td>
+                <td>
+                    <button class="btn btn-warning">Edit</button>
+                </td>
+                <td>
+                    <button class="btn btn-danger" (click)="OnDelete(food.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <ngb-pagination *ngIf="foodLength>pageSize" class="d-flex justify-content-center" [collectionSize]="foodLength"
+                [pageSize]="pageSize" [(page)]="pageNumber" [boundaryLinks]="true"
+                (pageChange)="OnPageChanged($event)"></ngb-pagination>
+</div>

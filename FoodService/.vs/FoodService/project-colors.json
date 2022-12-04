@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "dca6abea-b084-48c7-ab39-d1910339abf0": {
+      "ProjectGuid": "dca6abea-b084-48c7-ab39-d1910339abf0",
+      "DisplayName": "FoodService",
+      "ColorIndex": 0
+    },
+    "18bbc0d3-d283-4043-ae36-ab9067c8cc72": {
+      "ProjectGuid": "18bbc0d3-d283-4043-ae36-ab9067c8cc72",
+      "DisplayName": "DAL",
+      "ColorIndex": 1
+    },
+    "edbf9dfb-3bff-435c-a31e-78a026a41b94": {
+      "ProjectGuid": "edbf9dfb-3bff-435c-a31e-78a026a41b94",
+      "DisplayName": "BLL",
+      "ColorIndex": 2
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Прочие файлы",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 3
+}
